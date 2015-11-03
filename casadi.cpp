@@ -554,9 +554,9 @@ DynamicsProblem::DynamicsProblem(double Wi, double Wf, double mu, vector<double>
 }
 
 void DynamicsProblem::evolve(double tau, results& result) {
-    double tauf = 2e-7;
+    double tauf = 2e-6;
     double dt = 0.9e-9;
-//    Integrator integrator("integrator", "rk", ode_func, make_dict("t0", 0, "tf", 2*tau, "number_of_finite_elements", ceil((2*tau)/dt)));
+//    Integrator integrator("integrator", "rk", ode_func, make_dict("t0", 0, "tf", 2*tau, "number_of_finite_elements", ceil((2*tauf)/dt)));
     Integrator integrator("integrator", "cvodes", ode_func, make_dict("t0", 0, "tf", 2 * tau, "exact_jacobian", false, "max_num_steps", 100000));
 
     ptime start_time = microsec_clock::local_time();
